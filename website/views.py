@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, render_template
 # blue print means a blueprint of our application that 
 # has bunch of urls inside
 
@@ -11,4 +11,4 @@ views = Blueprint('views',__name__)
 @views.route('/')
 # this is a route function, so when / is in the url, it displays content inside home function
 def home():
-    return "<h1>Test</h1>"
+    return render_template("home.html") 
