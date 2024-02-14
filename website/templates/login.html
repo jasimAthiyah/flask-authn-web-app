@@ -1,7 +1,38 @@
 {% extends "base.html"%}
 <title>{% block title%}Login{%endblock%}</title>
 {%block content %}
-<h1>This is the Login page</h1>
-{# this {{}} is to denote that a python expression is being used #} {{ text }}
-{# if else statemnt in jinja#} {% if boolean==True%} Yes it is true! {% else %}
-No its not true! {% endif %} {%endblock%}
+
+<form method="POST">
+  <h3 align="center">Login</h3>
+  <!-- for email -->
+  <div class="form-group">
+    <label for="email">Email Address</label>
+    <!-- the name for the input is very important because that is what goes into the backend to represent emails -->
+    <input
+      type="email"
+      name="email"
+      id="email"
+      class="form-control"
+      placeholder="enter your email"
+    />
+  </div>
+
+  <!-- for Password -->
+  <div class="form-group">
+    <label for="password">Password</label>
+    <!-- the name for the input is very important because that is what goes into the backend to represent emails -->
+    <input
+      type="password"
+      name="password"
+      id="password"
+      class="form-control"
+      placeholder="enter your password"
+    />
+  </div>
+
+  <br />
+
+  <button type="submit" class="btn btn-primary">Login</button>
+</form>
+
+{%endblock%}

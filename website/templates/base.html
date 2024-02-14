@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -20,7 +20,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbar">
-            <div class="navbar-nav ">
+            <div class="navbar-nav">
                 <a class="nav-item nav-link" id="login" href="/login">Login</a>
                 <a class="nav-item nav-link" id="signUp" href="/sign-up">Sign Up</a>
                 <a class="nav-item nav-link" id="logOut" href="/logout">Log out</a>
@@ -29,11 +29,39 @@
         </div>
     </nav>
 
+    <!-- to display the flask flash messages -->
+    <!-- the below code assigns the flashed messages with the categories in messages variable -->
+    {% with messages = get_flashed_messages(with_categories=true)%}
+    <!-- if there are messages then... -->
+    {% if messages %}
+    <!-- looping thru the category and the messages -->
+    {% for category, message in messages%}
+    {% if category == 'error'%}
+    <!-- if the category is alert display the message in red -->
+    <div class="alert alert-danger alert-dismissable fade show" role="alert">
+        {{message}}
+        <!-- creating a button to dismiss the alrt -->
+        <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% else %}
+    <div class="alert alert-success alert-dismissable fade show" role="alert">
+        {{message}}
+        <!-- creating a button to dismiss the alrt -->
+        <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {%endif%}
+    {%endfor%}
+    {%endif%}
+    {%endwith%}
+
     <!-- container (bootstrap) to add content from different pages-->
     <div class="container">
         <!-- anything put inside block n end block would show up when rendering any child templates -->
-        {%block content %}
-        {%endblock%}
+        {%block content %} {%endblock%}
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

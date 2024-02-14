@@ -1,5 +1,5 @@
 from website import create_app
-
+# learnt from https://www.youtube.com/watch?v=dam0GPOAvVI&t=4263s
 app = create_app()
 
 # the below code says only if we run main file, the code inside will execute
